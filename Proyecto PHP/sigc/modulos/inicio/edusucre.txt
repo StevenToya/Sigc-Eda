@@ -1,0 +1,1180 @@
+CREATE TABLE IF NOT EXISTS `alterno` (
+  `alt_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) NOT NULL DEFAULT '0',
+  `pro_codigo` int(200) DEFAULT NULL,
+  `alt_nombre` varchar(50) DEFAULT NULL,
+  `alt_materia` varchar(200) DEFAULT NULL,
+  `alt_nota` varchar(20) DEFAULT NULL,
+  `alt_ano` int(5) DEFAULT NULL,
+  `alt_periodo` int(4) NOT NULL,
+  `valor_nota` varchar(20) NOT NULL,
+  `sigla_nota` varchar(5) NOT NULL,
+  PRIMARY KEY (`alt_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ano_escolar`
+--
+
+DROP TABLE IF EXISTS `ano_escolar`;
+CREATE TABLE IF NOT EXISTS `ano_escolar` (
+  `ano_codigo` int(10) NOT NULL DEFAULT '0',
+  `ano_rector` varchar(200) DEFAULT NULL,
+  `ano_secretaria` varchar(200) DEFAULT NULL,
+  `ano_comentario` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ano_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `area`
+--
+
+DROP TABLE IF EXISTS `area`;
+CREATE TABLE IF NOT EXISTS `area` (
+  `are_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `are_nombre` varchar(150) NOT NULL,
+  `are_estado` varchar(1) NOT NULL DEFAULT 'H',
+  PRIMARY KEY (`are_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignatura`
+--
+
+DROP TABLE IF EXISTS `asignatura`;
+CREATE TABLE IF NOT EXISTS `asignatura` (
+  `asi_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `cur_codigo` int(200) unsigned DEFAULT NULL,
+  `pro_codigo` int(200) DEFAULT NULL,
+  `asi_nombre` varchar(200) NOT NULL DEFAULT '',
+  `asi_posicion` int(2) NOT NULL DEFAULT '0',
+  `dim_codigo` int(200) NOT NULL,
+  `asi_dimension` char(1) NOT NULL,
+  `are_codigo` int(100) NOT NULL,
+  `asi_hora` int(2) NOT NULL,
+  `asi_promedio` char(2) NOT NULL DEFAULT 'Si',
+  PRIMARY KEY (`asi_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7074 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignatura_estudiante`
+--
+
+DROP TABLE IF EXISTS `asignatura_estudiante`;
+CREATE TABLE IF NOT EXISTS `asignatura_estudiante` (
+  `asi_est_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) unsigned DEFAULT NULL,
+  `asi_codigo` int(200) unsigned DEFAULT NULL,
+  `asi_est_nota1` varchar(15) DEFAULT NULL,
+  `asi_est_nota2` varchar(15) DEFAULT NULL,
+  `asi_est_nota3` varchar(15) DEFAULT NULL,
+  `asi_est_nota4` varchar(15) DEFAULT NULL,
+  `valor_nota1` varchar(20) DEFAULT NULL,
+  `valor_nota2` varchar(20) DEFAULT NULL,
+  `valor_nota3` varchar(20) DEFAULT NULL,
+  `valor_nota4` varchar(20) DEFAULT NULL,
+  `sigla_nota1` varchar(5) DEFAULT NULL,
+  `sigla_nota2` varchar(5) DEFAULT NULL,
+  `sigla_nota3` varchar(5) DEFAULT NULL,
+  `sigla_nota4` varchar(5) DEFAULT NULL,
+  `asi_est_nota5` varchar(15) NOT NULL,
+  `valor_nota5` varchar(20) NOT NULL,
+  `sigla_nota5` varchar(5) NOT NULL,
+  PRIMARY KEY (`asi_est_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=136203 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `barner`
+--
+
+DROP TABLE IF EXISTS `barner`;
+CREATE TABLE IF NOT EXISTS `barner` (
+  `bar_titulo` longtext,
+  `bar_subtitulo` longtext,
+  `bar_logo` varchar(20) DEFAULT NULL,
+  `bar_logo_posicion` varchar(20) DEFAULT NULL,
+  `bar_titulo_tamano` varchar(5) DEFAULT NULL,
+  `bar_titulo_color` varchar(10) DEFAULT NULL,
+  `bar_subtitulo_tamano` varchar(5) DEFAULT NULL,
+  `bar_subtitulo_color` varchar(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `boletin`
+--
+
+DROP TABLE IF EXISTS `boletin`;
+CREATE TABLE IF NOT EXISTS `boletin` (
+  `bol_indicadores` int(1) NOT NULL,
+  `bol_calificacion` int(1) NOT NULL,
+  `bol_titulo` int(1) NOT NULL,
+  `bol_promedio_general` char(1) NOT NULL,
+  `bol_promedio_grupo` char(1) NOT NULL,
+  `bol_promedio_area` char(1) NOT NULL,
+  `bol_puesto_grupo` char(1) NOT NULL,
+  `bol_puesto_estudiante` char(1) NOT NULL,
+  `bol_docente` char(1) NOT NULL,
+  `bol_usuario` char(1) NOT NULL,
+  `bol_subtitulo` char(1) NOT NULL,
+  `bol_logo` char(1) NOT NULL,
+  `bol_recomendaciones` char(1) NOT NULL,
+  `bol_periodo_1` char(1) NOT NULL,
+  `bol_periodo_2` char(1) NOT NULL,
+  `bol_periodo_3` char(1) NOT NULL,
+  `bol_periodo_4` char(1) NOT NULL,
+  `bol_promedio_periodos` char(1) NOT NULL,
+  `bol_notas` char(1) NOT NULL,
+  `bol_asignatura_area` char(1) NOT NULL,
+  `bol_i_h` char(1) NOT NULL,
+  `bol_docente_linea` char(1) NOT NULL,
+  `bol_firma_rector` char(1) NOT NULL,
+  `bol_firma_secretaria` char(1) NOT NULL,
+  `bol_firma_docente` char(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carnet`
+--
+
+DROP TABLE IF EXISTS `carnet`;
+CREATE TABLE IF NOT EXISTS `carnet` (
+  `car_titulo` char(1) NOT NULL,
+  `car_titulo_con` varchar(250) NOT NULL,
+  `car_titulo_tam` int(1) NOT NULL,
+  `car_titulo_col` varchar(7) NOT NULL,
+  `car_subtitulo` char(1) NOT NULL,
+  `car_subtitulo_con` varchar(250) NOT NULL,
+  `car_subtitulo_tam` int(1) NOT NULL,
+  `car_subtitulo_col` varchar(7) NOT NULL,
+  `car_pie` char(1) NOT NULL,
+  `car_pie_con` varchar(250) NOT NULL,
+  `car_pie_tam` int(1) NOT NULL,
+  `car_pie_col` varchar(7) NOT NULL,
+  `car_estudiante` char(1) NOT NULL,
+  `car_estudiante_tam` int(1) NOT NULL,
+  `car_estudiante_col` varchar(7) NOT NULL,
+  `car_codigo` char(1) NOT NULL,
+  `car_codigo_tam` int(1) NOT NULL,
+  `car_codigo_col` varchar(7) NOT NULL,
+  `car_grupo` char(1) NOT NULL,
+  `car_grupo_tam` int(1) NOT NULL,
+  `car_grupo_col` varchar(7) NOT NULL,
+  `car_foto` char(1) NOT NULL,
+  `car_logo` char(1) NOT NULL,
+  `car_fondo` char(1) NOT NULL,
+  `car_fondo_nom` varchar(20) NOT NULL,
+  `car_fondo_niv` int(1) NOT NULL,
+  `car_linea` char(1) NOT NULL,
+  `car_linea_col` varchar(7) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cobros`
+--
+
+DROP TABLE IF EXISTS `cobros`;
+CREATE TABLE IF NOT EXISTS `cobros` (
+  `cob_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `cur_codigo` int(250) DEFAULT NULL,
+  `cob_matricula` int(100) DEFAULT NULL,
+  `cob_seguro` int(100) DEFAULT NULL,
+  `cob_carnet` int(100) DEFAULT NULL,
+  `cob_pension` int(100) DEFAULT NULL,
+  `cob_otros` int(100) DEFAULT NULL,
+  `cob_enero` char(1) DEFAULT NULL,
+  `cob_julio` char(1) DEFAULT NULL,
+  `cob_diciembre` char(1) DEFAULT NULL,
+  `cob_febrero` char(1) NOT NULL DEFAULT 'S',
+  `cob_marzo` char(1) NOT NULL DEFAULT 'S',
+  `cob_abril` char(1) NOT NULL DEFAULT 'S',
+  `cob_mayo` char(1) NOT NULL DEFAULT 'S',
+  `cob_junio` char(1) NOT NULL DEFAULT 'S',
+  `cob_agosto` char(1) NOT NULL DEFAULT 'S',
+  `cob_septiembre` char(1) NOT NULL DEFAULT 'S',
+  `cob_octubre` char(1) NOT NULL DEFAULT 'S',
+  `cob_noviembre` char(1) NOT NULL DEFAULT 'S',
+  PRIMARY KEY (`cob_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cobros_especiales`
+--
+
+DROP TABLE IF EXISTS `cobros_especiales`;
+CREATE TABLE IF NOT EXISTS `cobros_especiales` (
+  `cob_esp_codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `cob_codigo` int(100) DEFAULT NULL,
+  `est_codigo` int(200) DEFAULT NULL,
+  `cob_esp_matricula` int(100) DEFAULT NULL,
+  `cob_esp_seguro` int(100) DEFAULT NULL,
+  `cob_esp_carnet` int(100) DEFAULT NULL,
+  `cob_esp_otros` int(100) DEFAULT NULL,
+  `cob_esp_pension` int(100) DEFAULT NULL,
+  PRIMARY KEY (`cob_esp_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+DROP TABLE IF EXISTS `comentarios`;
+CREATE TABLE IF NOT EXISTS `comentarios` (
+  `com_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `com_comentario` varchar(250) NOT NULL,
+  `pub_codigo` int(250) NOT NULL,
+  `usu_codigo` int(250) NOT NULL,
+  `usu_tipo` int(1) NOT NULL,
+  `com_estado` int(1) NOT NULL,
+  `com_fecha` date NOT NULL,
+  PRIMARY KEY (`com_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `curso`
+--
+
+DROP TABLE IF EXISTS `curso`;
+CREATE TABLE IF NOT EXISTS `curso` (
+  `cur_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `ano_codigo` int(10) unsigned NOT NULL DEFAULT '0',
+  `cur_nivel` int(5) NOT NULL DEFAULT '0',
+  `cur_subnivel` varchar(5) NOT NULL DEFAULT '',
+  `cur_jornada` varchar(5) NOT NULL DEFAULT '',
+  `cur_representante` varchar(200) DEFAULT NULL,
+  `periodo_1` varchar(1) NOT NULL DEFAULT 's',
+  `periodo_2` varchar(1) NOT NULL DEFAULT 's',
+  `periodo_3` varchar(1) NOT NULL DEFAULT 's',
+  `periodo_4` varchar(1) NOT NULL DEFAULT 's',
+  `periodo_5` varchar(1) NOT NULL DEFAULT 's',
+  PRIMARY KEY (`cur_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=367 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datos`
+--
+
+DROP TABLE IF EXISTS `datos`;
+CREATE TABLE IF NOT EXISTS `datos` (
+  `dat_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `dat_titulo` longtext,
+  `dat_contenido` longtext,
+  `dat_titulo_color` varchar(50) DEFAULT NULL,
+  `dat_titulo_tamano` varchar(50) DEFAULT NULL,
+  `dat_titulo_lugar` varchar(7) DEFAULT NULL,
+  `dat_contenido_color` varchar(50) DEFAULT NULL,
+  `dat_contenido_tamano` varchar(50) DEFAULT NULL,
+  `dat_contenido_lugar` varchar(7) DEFAULT NULL,
+  `dat_prioridad` int(2) DEFAULT NULL,
+  PRIMARY KEY (`dat_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `destacados`
+--
+
+DROP TABLE IF EXISTS `destacados`;
+CREATE TABLE IF NOT EXISTS `destacados` (
+  `des_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `cur_codigo` int(200) DEFAULT NULL,
+  `est_codigo` int(200) DEFAULT NULL,
+  PRIMARY KEY (`des_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dimension`
+--
+
+DROP TABLE IF EXISTS `dimension`;
+CREATE TABLE IF NOT EXISTS `dimension` (
+  `dim_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `dim_nombre` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`dim_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante`
+--
+
+DROP TABLE IF EXISTS `estudiante`;
+CREATE TABLE IF NOT EXISTS `estudiante` (
+  `est_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_nombre` varchar(200) NOT NULL DEFAULT '',
+  `est_apellido` varchar(200) NOT NULL DEFAULT '',
+  `est_tipo_identificacion` int(5) NOT NULL DEFAULT '0',
+  `est_identificacion` varchar(200) NOT NULL DEFAULT '0',
+  `est_sexo` varchar(10) NOT NULL DEFAULT '',
+  `est_direccion` varchar(200) DEFAULT NULL,
+  `est_telefono` varchar(200) DEFAULT NULL,
+  `est_nombre_acudiente` varchar(200) DEFAULT NULL,
+  `est_foto` varchar(200) DEFAULT NULL,
+  `est_estado` varchar(5) DEFAULT 'H',
+  `est_nacimiento` date DEFAULT NULL,
+  `est_indigena` varchar(2) DEFAULT NULL,
+  `est_desplasado` varchar(2) DEFAULT NULL,
+  `est_madre_c` varchar(2) DEFAULT NULL,
+  `est_desmovilisado` varchar(2) DEFAULT NULL,
+  `est_sisben` varchar(2) DEFAULT NULL,
+  `est_padre` varchar(150) NOT NULL,
+  `est_madre` varchar(150) NOT NULL,
+  `est_ide_acudiente` varchar(100) NOT NULL,
+  `est_ide_madre` varchar(100) NOT NULL,
+  `est_ide_padre` varchar(100) NOT NULL,
+  `est_lugar_nacimiento` varchar(100) NOT NULL,
+  `est_niv_sisben` varchar(100) NOT NULL,
+  `est_niv_estrato` varchar(100) NOT NULL,
+  `est_niv_discapacidad` varchar(100) NOT NULL,
+  PRIMARY KEY (`est_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9854 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante_evaluacion`
+--
+
+DROP TABLE IF EXISTS `estudiante_evaluacion`;
+CREATE TABLE IF NOT EXISTS `estudiante_evaluacion` (
+  `est_eva_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `eva_codigo` int(250) DEFAULT NULL,
+  `est_codigo` int(250) DEFAULT NULL,
+  `est_eva_inicio` varchar(40) DEFAULT NULL,
+  `est_eva_fin` varchar(40) DEFAULT NULL,
+  `est_eva_dia` int(2) DEFAULT NULL,
+  `est_eva_mes` int(2) DEFAULT NULL,
+  `est_eva_ano` int(4) DEFAULT NULL,
+  `est_eva_nota` varchar(20) DEFAULT NULL,
+  `est_eva_observacion` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`est_eva_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `evaluacion`
+--
+
+DROP TABLE IF EXISTS `evaluacion`;
+CREATE TABLE IF NOT EXISTS `evaluacion` (
+  `eva_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `asi_codigo` int(250) DEFAULT NULL,
+  `eva_nombre` varchar(250) DEFAULT NULL,
+  `eva_explicacion` longtext,
+  `eva_dia` int(2) DEFAULT NULL,
+  `eva_mes` int(2) unsigned DEFAULT NULL,
+  `eva_ano` int(4) unsigned DEFAULT NULL,
+  `eva_estado` int(2) DEFAULT NULL,
+  `eva_tipo` int(2) DEFAULT NULL,
+  PRIMARY KEY (`eva_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eventos`
+--
+
+DROP TABLE IF EXISTS `eventos`;
+CREATE TABLE IF NOT EXISTS `eventos` (
+  `eve_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `eve_titulo` varchar(250) DEFAULT NULL,
+  `eve_evento` longtext,
+  `eve_dia` int(2) DEFAULT NULL,
+  `eve_mes` int(2) DEFAULT NULL,
+  `eve_ano` int(4) DEFAULT NULL,
+  PRIMARY KEY (`eve_codigo`),
+  KEY `eve_codigo` (`eve_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factura`
+--
+
+DROP TABLE IF EXISTS `factura`;
+CREATE TABLE IF NOT EXISTS `factura` (
+  `fac_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `fac_numero` int(250) NOT NULL,
+  `cob_codigo` int(200) NOT NULL,
+  `est_codigo` int(250) NOT NULL,
+  `fac_estado` char(1) NOT NULL DEFAULT 'H',
+  `fac_fecha` datetime NOT NULL,
+  `fac_usu_crea` varchar(200) NOT NULL,
+  `fac_usu_crea_tipo` int(1) NOT NULL,
+  `fac_usu_borra` varchar(200) NOT NULL,
+  `fac_usu_borra_tipo` int(1) NOT NULL,
+  `fac_fecha_borra` datetime NOT NULL,
+  PRIMARY KEY (`fac_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factura_detalle`
+--
+
+DROP TABLE IF EXISTS `factura_detalle`;
+CREATE TABLE IF NOT EXISTS `factura_detalle` (
+  `fac_det_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `fac_codigo` int(200) NOT NULL,
+  `fac_det_tipo` int(1) NOT NULL,
+  `fac_det_pago` int(250) NOT NULL,
+  PRIMARY KEY (`fac_det_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `grado`
+--
+
+DROP TABLE IF EXISTS `grado`;
+CREATE TABLE IF NOT EXISTS `grado` (
+  `gra_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) DEFAULT NULL,
+  `gra_nombre` varchar(50) DEFAULT NULL,
+  `gra_ano` int(5) NOT NULL DEFAULT '0',
+  `gra_mes` int(2) unsigned DEFAULT NULL,
+  `gra_dia` int(2) unsigned DEFAULT NULL,
+  PRIMARY KEY (`gra_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horario`
+--
+
+DROP TABLE IF EXISTS `horario`;
+CREATE TABLE IF NOT EXISTS `horario` (
+  `hor_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `asi_codigo` int(200) NOT NULL DEFAULT '0',
+  `hor_salon` varchar(200) NOT NULL DEFAULT '',
+  `hor_desde` varchar(100) NOT NULL DEFAULT '',
+  `hor_hasta` varchar(100) NOT NULL DEFAULT '',
+  `hor_dia` int(5) NOT NULL DEFAULT '0',
+  `cur_codigo` int(150) NOT NULL,
+  `hor_ano` int(4) NOT NULL,
+  PRIMARY KEY (`hor_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inasistencias`
+--
+
+DROP TABLE IF EXISTS `inasistencias`;
+CREATE TABLE IF NOT EXISTS `inasistencias` (
+  `ina_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(250) DEFAULT NULL,
+  `asi_codigo` int(250) DEFAULT NULL,
+  `ina_dia` int(2) DEFAULT NULL,
+  `ina_mes` int(2) DEFAULT NULL,
+  `ina_ano` int(4) DEFAULT NULL,
+  `ina_horas` int(2) DEFAULT NULL,
+  `ina_justificacion` char(2) DEFAULT NULL,
+  `ina_motivo` longtext,
+  `ina_periodo` int(2) DEFAULT NULL,
+  PRIMARY KEY (`ina_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35659 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indicador`
+--
+
+DROP TABLE IF EXISTS `indicador`;
+CREATE TABLE IF NOT EXISTS `indicador` (
+  `ind_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `log_codigo` int(250) unsigned DEFAULT NULL,
+  `ind_descripcion` longtext,
+  PRIMARY KEY (`ind_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=136 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indicador_estudiante`
+--
+
+DROP TABLE IF EXISTS `indicador_estudiante`;
+CREATE TABLE IF NOT EXISTS `indicador_estudiante` (
+  `ind_est_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `ind_codigo` int(250) unsigned DEFAULT NULL,
+  `est_codigo` int(250) DEFAULT NULL,
+  `ind_est_nota` varchar(20) DEFAULT NULL,
+  `valor_nota` int(100) DEFAULT NULL,
+  `sigla_nota` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`ind_est_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=168 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logro`
+--
+
+DROP TABLE IF EXISTS `logro`;
+CREATE TABLE IF NOT EXISTS `logro` (
+  `log_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `asi_codigo` int(200) unsigned DEFAULT NULL,
+  `log_periodo` int(5) unsigned DEFAULT NULL,
+  `log_descripcion` longtext,
+  PRIMARY KEY (`log_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=190137 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logro_estudiante`
+--
+
+DROP TABLE IF EXISTS `logro_estudiante`;
+CREATE TABLE IF NOT EXISTS `logro_estudiante` (
+  `log_est_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `log_codigo` int(250) unsigned DEFAULT NULL,
+  `est_codigo` int(250) unsigned DEFAULT NULL,
+  `log_est_nota` varchar(20) DEFAULT NULL,
+  `valor_nota` varchar(20) DEFAULT NULL,
+  `sigla_nota` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`log_est_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=752887 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `matricula`
+--
+
+DROP TABLE IF EXISTS `matricula`;
+CREATE TABLE IF NOT EXISTS `matricula` (
+  `mat_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) DEFAULT NULL,
+  `cur_codigo` int(11) NOT NULL DEFAULT '0',
+  `mat_ano` int(10) NOT NULL DEFAULT '0',
+  `mat_estado` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`mat_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14689 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajeria`
+--
+
+DROP TABLE IF EXISTS `mensajeria`;
+CREATE TABLE IF NOT EXISTS `mensajeria` (
+  `men_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `men_origen` int(200) DEFAULT NULL,
+  `men_destino` int(200) DEFAULT NULL,
+  `men_origen_tipo` int(200) DEFAULT NULL,
+  `men_destino_tipo` int(200) DEFAULT NULL,
+  `men_asunto` varchar(200) DEFAULT NULL,
+  `men_mensaje` longtext,
+  `men_dia` int(2) DEFAULT NULL,
+  `men_mes` int(2) DEFAULT NULL,
+  `men_ano` int(4) DEFAULT NULL,
+  `men_estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`men_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8392 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mural`
+--
+
+DROP TABLE IF EXISTS `mural`;
+CREATE TABLE IF NOT EXISTS `mural` (
+  `mur_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `cur_codigo` int(250) DEFAULT NULL,
+  `est_codigo` int(250) DEFAULT NULL,
+  `mur_dia` int(2) DEFAULT NULL,
+  `mur_mes` int(2) DEFAULT NULL,
+  `mur_ano` int(4) DEFAULT NULL,
+  `mur_mensaje` longtext,
+  PRIMARY KEY (`mur_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificacion`
+--
+
+DROP TABLE IF EXISTS `notificacion`;
+CREATE TABLE IF NOT EXISTS `notificacion` (
+  `nott_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `nott_destino` int(200) DEFAULT NULL,
+  `nott_origen` int(200) DEFAULT NULL,
+  `nott_origen_tipo` int(200) DEFAULT NULL,
+  `nott_destino_tipo` int(200) DEFAULT NULL,
+  `nott_notificacion` longtext,
+  `nott_dia` int(2) DEFAULT NULL,
+  `nott_mes` int(2) DEFAULT NULL,
+  `nott_ano` int(4) DEFAULT NULL,
+  PRIMARY KEY (`nott_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obscenidad`
+--
+
+DROP TABLE IF EXISTS `obscenidad`;
+CREATE TABLE IF NOT EXISTS `obscenidad` (
+  `obs_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `obs_palabra` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`obs_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `observaciones`
+--
+
+DROP TABLE IF EXISTS `observaciones`;
+CREATE TABLE IF NOT EXISTS `observaciones` (
+  `obs_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) NOT NULL,
+  `cur_codigo` int(200) NOT NULL,
+  `obs_periodo` int(4) NOT NULL,
+  `obs_titulo` varchar(200) NOT NULL,
+  `obs_descripcion` longtext,
+  `obs_nota` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`obs_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `opciones`
+--
+
+DROP TABLE IF EXISTS `opciones`;
+CREATE TABLE IF NOT EXISTS `opciones` (
+  `ano_codigo` int(10) DEFAULT NULL,
+  `logro` char(2) DEFAULT 'S',
+  `indicador` char(2) DEFAULT 'S',
+  `css` varchar(10) DEFAULT NULL,
+  `muro` char(2) DEFAULT 'S',
+  `mensaje_administrador` char(2) DEFAULT 'S',
+  `vista_asignatura` char(2) DEFAULT 'S',
+  `status` char(2) DEFAULT 'S',
+  `vista_eventos` char(2) DEFAULT 'S',
+  `vista_mejores` char(2) DEFAULT 'S',
+  `identificador` varchar(250) DEFAULT NULL,
+  `visita` int(250) DEFAULT NULL,
+  `notas_estudiante` char(1) NOT NULL DEFAULT '',
+  `pagos_estudiante` char(2) NOT NULL DEFAULT '',
+  `encuesta` char(2) NOT NULL DEFAULT '',
+  `excelente` int(200) NOT NULL DEFAULT '0',
+  `bueno` int(200) NOT NULL DEFAULT '0',
+  `regular` int(200) NOT NULL DEFAULT '0',
+  `falta` int(200) NOT NULL DEFAULT '0',
+  `tip_not_codigo` int(50) NOT NULL DEFAULT '1',
+  `vista_personal` char(2) NOT NULL DEFAULT 'S',
+  `calcular_final` varchar(1) NOT NULL DEFAULT 'N',
+  `ins_titulo` varchar(50) NOT NULL,
+  `ins_mensaje` varchar(250) NOT NULL,
+  `ins_estado` varchar(1) NOT NULL DEFAULT 'H',
+  `color_1` varchar(8) NOT NULL,
+  `color_2` varchar(8) NOT NULL,
+  `color_3` varchar(8) NOT NULL,
+  `min_nota` varchar(5) NOT NULL DEFAULT '6.0',
+  `aud_publicaciones` varchar(1) NOT NULL DEFAULT 'N',
+  `vista_publicacion` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_logro` varchar(1) NOT NULL DEFAULT 'S',
+  `edi_logro` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_nota_1` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_nota_2` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_nota_3` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_nota_4` varchar(1) NOT NULL DEFAULT 'S',
+  `ing_nota_f` varchar(1) NOT NULL DEFAULT 'S',
+  `edi_nota` varchar(1) NOT NULL DEFAULT 'S',
+  `imp_boletin` varchar(1) NOT NULL DEFAULT 'S',
+  `lugar` varchar(50) NOT NULL,
+  `certificado_ini` longtext NOT NULL,
+  `certificado_fin` longtext NOT NULL,
+  `menu_dinamico` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `outin`
+--
+
+DROP TABLE IF EXISTS `outin`;
+CREATE TABLE IF NOT EXISTS `outin` (
+  `out_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) DEFAULT NULL,
+  `out_nombre` varchar(20) DEFAULT NULL,
+  `out_motivo` longtext,
+  `out_dia` int(2) DEFAULT NULL,
+  `out_mes` int(2) DEFAULT NULL,
+  `out_ano` int(4) DEFAULT NULL,
+  PRIMARY KEY (`out_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos`
+--
+
+DROP TABLE IF EXISTS `pagos`;
+CREATE TABLE IF NOT EXISTS `pagos` (
+  `pag_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `cob_codigo` int(250) DEFAULT NULL,
+  `est_codigo` int(200) DEFAULT NULL,
+  `pag_matricula` int(100) DEFAULT NULL,
+  `pag_seguro` int(100) DEFAULT NULL,
+  `pag_carnet` int(100) DEFAULT NULL,
+  `pag_otros` int(100) DEFAULT NULL,
+  `pag_enero` int(100) DEFAULT NULL,
+  `pag_febrero` int(100) DEFAULT NULL,
+  `pag_marzo` int(100) DEFAULT NULL,
+  `pag_abril` int(100) DEFAULT NULL,
+  `pag_mayo` int(100) DEFAULT NULL,
+  `pag_junio` int(100) DEFAULT NULL,
+  `pag_julio` int(100) DEFAULT NULL,
+  `pag_agosto` int(100) DEFAULT NULL,
+  `pag_septiembre` int(100) DEFAULT NULL,
+  `pag_octubre` int(100) DEFAULT NULL,
+  `pag_noviembre` int(100) DEFAULT NULL,
+  `pag_diciembre` int(100) DEFAULT NULL,
+  PRIMARY KEY (`pag_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pregunta`
+--
+
+DROP TABLE IF EXISTS `pregunta`;
+CREATE TABLE IF NOT EXISTS `pregunta` (
+  `pre_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `eva_codigo` int(250) DEFAULT NULL,
+  `pre_pregunta` longtext,
+  PRIMARY KEY (`pre_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesor`
+--
+
+DROP TABLE IF EXISTS `profesor`;
+CREATE TABLE IF NOT EXISTS `profesor` (
+  `pro_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `pro_nombre` varchar(200) NOT NULL DEFAULT '',
+  `pro_apellido` varchar(200) NOT NULL DEFAULT '',
+  `pro_tipo_identificacion` int(5) NOT NULL DEFAULT '0',
+  `pro_identificacion` int(100) NOT NULL DEFAULT '0',
+  `pro_direccion` varchar(200) NOT NULL DEFAULT '',
+  `pro_telefono` varchar(200) NOT NULL DEFAULT '',
+  `pro_email` varchar(200) NOT NULL DEFAULT '',
+  `pro_titulo` varchar(200) NOT NULL DEFAULT '',
+  `pro_descripcion` varchar(200) NOT NULL DEFAULT '',
+  `pro_eliminado` varchar(5) DEFAULT 'N',
+  PRIMARY KEY (`pro_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicaciones`
+--
+
+DROP TABLE IF EXISTS `publicaciones`;
+CREATE TABLE IF NOT EXISTS `publicaciones` (
+  `pub_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `pub_titulo` varchar(250) NOT NULL,
+  `pub_contenido` longtext NOT NULL,
+  `pub_resumen` varchar(250) NOT NULL,
+  `pro_codigo` int(11) NOT NULL,
+  `pub_visita` int(4) NOT NULL,
+  `pub_estado` int(1) NOT NULL,
+  `pub_fecha` date NOT NULL,
+  PRIMARY KEY (`pub_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recomendacion`
+--
+
+DROP TABLE IF EXISTS `recomendacion`;
+CREATE TABLE IF NOT EXISTS `recomendacion` (
+  `rec_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `asi_codigo` int(200) unsigned DEFAULT NULL,
+  `rec_periodo` int(5) unsigned DEFAULT NULL,
+  `rec_descripcion` longtext,
+  PRIMARY KEY (`rec_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=380 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recomendacion_estudiante`
+--
+
+DROP TABLE IF EXISTS `recomendacion_estudiante`;
+CREATE TABLE IF NOT EXISTS `recomendacion_estudiante` (
+  `rec_est_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `rec_codigo` int(250) unsigned DEFAULT NULL,
+  `est_codigo` int(250) unsigned DEFAULT NULL,
+  `rec_est_nota` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`rec_est_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuesta`
+--
+
+DROP TABLE IF EXISTS `respuesta`;
+CREATE TABLE IF NOT EXISTS `respuesta` (
+  `res_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `pre_codigo` int(250) DEFAULT NULL,
+  `est_eva_codigo` int(250) DEFAULT NULL,
+  `res_respuesta` longtext,
+  PRIMARY KEY (`res_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sancion`
+--
+
+DROP TABLE IF EXISTS `sancion`;
+CREATE TABLE IF NOT EXISTS `sancion` (
+  `san_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `est_codigo` int(200) DEFAULT NULL,
+  `san_motivo` varchar(250) DEFAULT NULL,
+  `san_castigo` varchar(250) DEFAULT NULL,
+  `san_ano` int(5) DEFAULT NULL,
+  `san_mes` int(2) DEFAULT NULL,
+  `san_dia` int(2) DEFAULT NULL,
+  PRIMARY KEY (`san_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `secretaria`
+--
+
+DROP TABLE IF EXISTS `secretaria`;
+CREATE TABLE IF NOT EXISTS `secretaria` (
+  `sec_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `sec_nombre` varchar(200) NOT NULL DEFAULT '',
+  `sec_apellido` varchar(200) NOT NULL DEFAULT '',
+  `sec_tipo_identificacion` int(5) NOT NULL DEFAULT '0',
+  `sec_identificacion` int(100) NOT NULL DEFAULT '0',
+  `sec_direccion` varchar(200) NOT NULL DEFAULT '',
+  `sec_telefono` varchar(200) NOT NULL DEFAULT '',
+  `sec_email` varchar(200) NOT NULL DEFAULT '',
+  `sec_descripcion` varchar(200) NOT NULL DEFAULT '',
+  `sec_eliminado` varchar(5) DEFAULT 'N',
+  PRIMARY KEY (`sec_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_nota`
+--
+
+DROP TABLE IF EXISTS `tipo_nota`;
+CREATE TABLE IF NOT EXISTS `tipo_nota` (
+  `tip_not_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `tip_not_descripcion` varchar(250) NOT NULL,
+  `tip_not_nombre` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tip_not_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_nota_clasificacion`
+--
+
+DROP TABLE IF EXISTS `tipo_nota_clasificacion`;
+CREATE TABLE IF NOT EXISTS `tipo_nota_clasificacion` (
+  `tipo_not_cla_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `tipo_not_codigo` int(250) DEFAULT NULL,
+  `tipo_not_cla_nombre` varchar(50) DEFAULT '0',
+  `tipo_not_cla_valor` decimal(10,1) DEFAULT NULL,
+  `tipo_not_cla_valor_f` decimal(10,1) DEFAULT NULL,
+  `tipo_not_cla_sigla` varchar(5) DEFAULT NULL,
+  `tipo_not_cla_ano` int(4) DEFAULT NULL,
+  PRIMARY KEY (`tipo_not_cla_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tips`
+--
+
+DROP TABLE IF EXISTS `tips`;
+CREATE TABLE IF NOT EXISTS `tips` (
+  `tip_codigo` int(250) NOT NULL AUTO_INCREMENT,
+  `tip_titulo` varchar(150) NOT NULL,
+  `tip_contenido` longtext NOT NULL,
+  `tip_tipo` int(1) NOT NULL,
+  `tip_imagen` varchar(150) DEFAULT NULL,
+  `tip_imagen_2` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`tip_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `usu_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `usu_usuario` varchar(200) NOT NULL DEFAULT '',
+  `usu_contrasena` varchar(200) NOT NULL DEFAULT '',
+  `usu_tipo` int(5) NOT NULL DEFAULT '0',
+  `usu_estado` varchar(5) NOT NULL DEFAULT '',
+  `usu_pertenece` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`usu_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9961 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `utiles`
+--
+
+DROP TABLE IF EXISTS `utiles`;
+CREATE TABLE IF NOT EXISTS `utiles` (
+  `uti_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `asi_codigo` int(200) DEFAULT NULL,
+  `uti_nombre` longtext,
+  `uti_caracteristicas` longtext,
+  PRIMARY KEY (`uti_codigo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `votacion`
+--
+
+DROP TABLE IF EXISTS `votacion`;
+CREATE TABLE IF NOT EXISTS `votacion` (
+  `vot_codigo` int(100) NOT NULL AUTO_INCREMENT,
+  `vot_nombre` varchar(200) NOT NULL,
+  `vot_estado` varchar(1) NOT NULL,
+  `vot_fecha` date NOT NULL,
+  `vot_ano` int(4) NOT NULL,
+  PRIMARY KEY (`vot_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `votacion_candidatos`
+--
+
+DROP TABLE IF EXISTS `votacion_candidatos`;
+CREATE TABLE IF NOT EXISTS `votacion_candidatos` (
+  `vot_can_codigo` int(100) NOT NULL AUTO_INCREMENT,
+  `vot_codigo` int(100) NOT NULL,
+  `est_codigo` int(250) NOT NULL,
+  PRIMARY KEY (`vot_can_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `votacion_curso`
+--
+
+DROP TABLE IF EXISTS `votacion_curso`;
+CREATE TABLE IF NOT EXISTS `votacion_curso` (
+  `vot_cur_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `vot_codigo` int(100) NOT NULL,
+  `cur_codigo` int(200) NOT NULL,
+  PRIMARY KEY (`vot_cur_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `votacion_estudiante`
+--
+
+DROP TABLE IF EXISTS `votacion_estudiante`;
+CREATE TABLE IF NOT EXISTS `votacion_estudiante` (
+  `vot_est_codigo` int(200) NOT NULL AUTO_INCREMENT,
+  `vot_codigo` int(200) NOT NULL,
+  `est_codigo` int(250) NOT NULL,
+  `vot_can_codigo` varchar(200) NOT NULL,
+  `vot_est_fecha` datetime NOT NULL,
+  PRIMARY KEY (`vot_est_codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+INSERT INTO `obscenidad` (`obs_codigo`, `obs_palabra`) VALUES
+(1, 'nojoda'),
+(2, 'malparid'),
+(3, 'hijueputa'),
+(4, 'mierda'),
+(6, 'verga'),
+(7, 'gonorrea'),
+(8, 'monda');
+
+
+INSERT INTO `tips` (`tip_codigo`, `tip_titulo`, `tip_contenido`, `tip_tipo`, `tip_imagen`, `tip_imagen_2`) VALUES
+(1, '¿Que tanto sabes? Resuelve esta pregunta…', 'Dícese de los habitantes de Trinidad y Tobago\r\n<br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Trinitenses \r\n</font><font color=red>.</font></div>', 3, 'cerebro.png', ''),
+(2, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Que distancia recorrerá un coche en tres horas si va a 50 Km/h?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">150 Km\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(3, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Cuántos días tiene un año bisiesto?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">366 Días\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(4, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Cuántos lados tienen un hexágono?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">6 lados\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(5, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Qué inventaron los hermanos Lumiéres?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">El Cine\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(6, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Que país es conocido como ´ El país del Sol Naciente ´?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Japón\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(7, '¿Que tanto sabes? Resuelve esta pregunta…', '¿En que ciudad podemos encontrar la Estatua de la libertad?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Nueva York\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(8, '¿Que tanto sabes? Resuelve esta pregunta…', 'Juan tiene 10 años, marcos tiene 5 más que Juan y Pepito tiene 3 menos que Juan.<br>\r\n¿Cuántos años tiene Pepito?\r\n\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">7 años\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(9, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Qué dirección indica ´ babor ´?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Izquierda\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(10, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Cómo murió Juana de Arco?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Quemada\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(11, '¿Que tanto sabes? Resuelve esta pregunta…', '¿En que Operación el resultado es el cociente?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">La División\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(12, '¿Que tanto sabes? Resuelve esta pregunta…', '¿En que país nació Gabriel García Márquez? \r\n\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Colombia\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(13, '¿Que tanto sabes? Resuelve esta pregunta…', 'A un examen se presentaron 150 personas. Si tres quintas partes son hombres,<br>\r\n¿Cuantas mujeres hicieron el examen? \r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">60 mujeres\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(14, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Que significa PYME?\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Pequeña y Mediana Empresa\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(15, '¿Que tanto sabes? Resuelve esta pregunta…', 'Un artículo cuesta 10000 pesetas. Sobre este precio se ofrece un descuento del 20%. Posteriormente, el articulo se rebaja el 10% de su ultimo precio.<br> \r\n¿Cuál es el precio final de venta del artículo? \r\n\r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">7200 pesetas\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(16, '¿Que tanto sabes? Resuelve esta pregunta…', '¿Cual es la capital de la India? \r\n\r\n<br><br><br><div align="right"><font color=red>.</font><font color="#FFFFFF">Nueva Delhi\r\n</font><font color=red>.</font></div>\r\n', 3, 'cerebro.png', ''),
+(17, '<b>Presta mucha atención</b>, Protege tu espacio en el  sistema', 'Trata de que nadie conozca tu contraseña de entrada al sistema, y cámbiala continuamente. Para cambiar la contraseña te vas a la ultima opción llamada “contraseña”, al ingresar digita la contraseña vieja, luego escribes la contraseña nueva y vuelves a escribir la nueva contraseña.', 1, 'enterate_est.png', 'ladron.png'),
+(18, '<b>Presta mucha atención</b>, Protege tu espacio en el  sistema', 'Trata de que nadie conozca tu contraseña de entrada al sistema, y cámbiala continuamente. Para cambiar la contraseña te vas a la opción <b>Configuración Pers - Contraseña </b>, al ingresar digita la contraseña vieja, luego escribes la contraseña nueva y vuelves a escribir la nueva contraseña.', 1, 'enterate_doc.png', 'ladron.png'),
+(19, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que los cocodrilos pueden comer una sola vez al año y que los koalas pueden vivir toda su vida sin tomar agua.', 3, 'curiosos.png', ''),
+(20, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Si en una estatua ecuestre (persona a caballo) el caballo tiene dos patas en el aire, la persona murió en combate. Si el caballo tiene una de las patas frontales en el aire, la persona murió de heridas recibidas en combate. Si el caballo tiene las cuatro patas en el suelo, la persona murió de causas naturales.', 3, 'curiosos.png', ''),
+(21, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que las ratas y los caballos no pueden vomitar. \r\n\r\n', 3, 'curiosos.png', ''),
+(22, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que una cucaracha puede vivir siete dias despues de que le arranquen la cabeza. \r\n', 3, 'curiosos.png', ''),
+(23, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que las estrellas de mar no tienen cerebro', 3, 'curiosos.png', ''),
+(24, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que si tú multiplicas  111111111 x 111111111 se obtiene 12345678987654321.', 3, 'curiosos.png', ''),
+(25, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que utilizar audífonos por solo una hora, incrementa el numero de bacteria en tu oido unas 700 veces.', 3, 'curiosos.png', ''),
+(26, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Sabias que las ratas se multiplican tan rápidamente que en 18 meses, dos rata pueden llegar a tener 1 millón de hijos.', 3, 'curiosos.png', ''),
+(27, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'La tierra pesa alrededor de:<br> 6,588,000,000,000,000,000,000,000 toneladas\r\n', 3, '', ''),
+(28, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Los camellos tienen tres párpados para protegerse de las tormentas de arena\r\ny  un topo puede cavar un túnel de 300 pies de largo en solo una noche\r\n', 3, 'curiosos.png', ''),
+(29, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Los ojos de los animales nocturnos pueden ver bien de noche debido a un compuesto blanco en la retina llamado guanina, sustancia que proporciona una superficie reflectora que hace que la luz rebote hacia enfrente, dándole a los ojos del animal una segunda oportunidad de absorber la luz de las imágenes. Esta luz reflejada hace que los ojos del animal parezcan brillar en la oscuridad\r\n', 3, 'curiosos.png', ''),
+(30, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Cuando la luz pasa a través de la atmosfera terrestre, los colores son desviados y dispersados en muchas direcciones por las moléculas atmosféricas. Los colores azul y morado son los que mas se desvían haciendo que se dispersen por todo el cielo, por eso es que vemos el cielo color azul', 3, 'curiosos.png', ''),
+(31, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'Los elefantes son los únicos animales en el mundo que no pueden saltar', 3, 'curiosos.png', ''),
+(32, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'El corazón de un camarón se localiza en su cabeza.\r\n', 3, 'curiosos.png', ''),
+(33, 'Datos Curiosos <b>¡ Sorpréndete !</b>', 'El corazón humano genera suficiente presión cuando bombea la sangre fuera del cuerpo que podría esparcirla hasta 10 metros de distancia. \r\n', 3, 'curiosos.png', ''),
+(34, 'Entra a tu espacio', 'Sabias que si eres estudiante de este plantel puedes entrar al sistema con tu identificación o código con que fuiste registrado antecediéndole la letra ´e´, es decir, si tu identificación o código es 72254544 el usuario es ´e72254544´ con la contraseña ´1234´ <b> Se te recomienda cambiar la contraseña </b>', 1, 'enterate_est.png', ''),
+(35, 'Entra a tu espacio', 'Sabias que si eres docente de este plantel puedes entrar al sistema con tu cedula antecediéndole el numero ´2´, es decir, si tu identificación o código es 72254544 el usuario es ´272254544´ con la contraseña ´1234´ <b> Se te recomienda cambiar la contraseña </b>', 1, 'enterate_doc.png', ''),
+(36, 'Envia mensaje por medio de este sistema', 'Sabias que le puedes enviar mensajes a tus compañeros, docentes y directivos del plantel, te recomendamos tener mesura en el  mensaje ya que sistema puede identificar insultos y ofensas y reportarlas al administrador del sistema <b> Evítate problemas </b>', 1, 'enterate_est.png', ''),
+(37, 'Envia mensaje por medio de este sistema', 'Sabias que le puedes enviar mensajes a los estudiantes, docentes y directivos del plantel fácilmente, solo tienes que seleccionar a la persona que desea enviar el mensaje, no necesitas saber su correo electronico. ', 1, 'enterate_doc.png', ''),
+(38, '¿Cual es tu horario?', 'Sabias que puedes ver tu horario de clase e imprimirlo. Entra y compruébalo\r\n(Lo horario lo puedes ver siempre y cuando los directivos del plantel lo permitan)', 1, 'enterate_est.png', ''),
+(39, 'Escribe una opinión o pensamiento  ', 'Sabias que tienes un espacio para mostrar tus opiniones o pensamientos. Entra en la opción ´mural´ y escribe lo que desee, te recomendamos tener mesura en tu opinion ya que sistema puede identificar insultos y ofensas y reportarlas al administrador del sistema <b> Evítate problemas </b>', 1, 'enterate_est.png', ''),
+(40, '¿Cuales son tus utiles escolares?', 'Sabias que puedes ver tus utiles escolares  e imprimirlo. Entra y compruébalo(Los utiles escolares los puedes ver siempre y cuando los directivos del plantel lo permitan)', 1, 'enterate_est.png', ''),
+(41, 'Mira tus Notas', 'Quieres ver como estas tus notas, pues ya puedes verlas entra al sistema y míralas (Las notas las puedes ver siempre y cuando los directivos del plantel lo permitan)  ', 1, 'enterate_est.png', ''),
+(42, 'Mira tu asistencia', 'Quieres ver como anda tu asistencia por asignatura, pues ya puedes verlas entra al sistema y míralas (Las inasistencia las puedes ver siempre y cuando los directivos del plantel lo permitan).', 1, 'enterate_est.png', ''),
+(43, '¿Cuales son tus compañeros?', 'Sabias que ya puedes ver los compañeros de clase de tu curso y enviarles algún mensaje. Entra y conócelos. ', 1, 'enterate_est.png', ''),
+(45, 'Quieres decirnos algo, <b>¡Comenta!</b>', 'Puedes enviar un correo hacia nosotros con tus opiniones o sugerencia sobre este  sistema, nuestros correos son <b> soporte@edusucre.com, soporte@eduatlantico.com.</b>', 1, 'edu.png', ''),
+(46, 'Desea saber algo de nosotros, <b>¡Pregúntanos!</b>', 'Puedes enviar un correo hacia nosotros sobre preguntas del sistema o como adquirir este producto para otra institución educativa, nuestros correos son <b> informacion@edusucre.com, informacion@eduatlantico.com.</b>', 1, 'edu.png', ''),
+(47, 'Siempre estamos listos', 'Sabias que este sistema esta disponible las 24 horas del día y los 365 días del año, siempre estaremos aquí para ti', 1, 'edu.png', ''),
+(48, 'Todos participan', 'Sabias que este sistema integra a toda la comunidad educativa de esta institución (Estudiantes, docentes, funcionarios de la institución y padres de familia), quienes con su usuario y contraseña pueden acceder a su información correspondiente e interactuar entre ellos ', 1, 'edu.png', ''),
+(55, 'Tienes un pensamiento y quieres que lo sepa <b> ¡todo el mundo!</b> ', 'Puedes hacer una publicar un artículo o pensamiento, para que la comunidad educativa y los visitantes de este portal lo vean, puedes ver cuantas personas lo han leído y recibir comentarios. (Las publicaciones se pueden  ver siempre y cuando los directivos del plantel lo permitan)', 1, 'enterate_doc.png', ''),
+(56, 'Tienes control total de tus notas', 'Los docentes pueden ser responsables de crear su propio banco de indicadores de desempeño y de observaciones o recomendaciones, Al mismo tiempo que los puede calificar o asignar para cada estudiante de forma fácil, rápida y sencilla, con la opción de modificar la calificación en caso de equivocación.<br> (estas acciones se pueden ejecutar  siempre y cuando los directivos del plantel lo permitan)', 1, 'enterate_doc.png', ''),
+(57, 'Tienes el control de tus estudiantes', 'sabias que el docente asignado como profesor de grupo puede ver los procesos académicos de sus estudiantes e ingresarles observaciones las cuales serán reflejadas en el informe o boletín.', 1, 'enterate_doc.png', ''),
+(58, 'Realiza tus talleres por este medio', 'Sabias que el docente tiene la opción de diseñar talleres o exámenes por este medio, donde los estudiantes tendrán que resolverlos, y el mismo sistema le mostrara las respuestas de los estudiantes al docente con la posibilidad de calificar la evaluación.', 1, 'enterate_doc.png', '');
+
+
+INSERT INTO `boletin` (`bol_indicadores`, `bol_calificacion`, `bol_titulo`, `bol_promedio_general`, `bol_promedio_grupo`, `bol_promedio_area`, `bol_puesto_grupo`, `bol_puesto_estudiante`, `bol_docente`, `bol_usuario`, `bol_subtitulo`, `bol_logo`, `bol_recomendaciones`, `bol_periodo_1`, `bol_periodo_2`, `bol_periodo_3`, `bol_periodo_4`, `bol_promedio_periodos`, `bol_notas`, `bol_asignatura_area`, `bol_i_h`, `bol_docente_linea`, `bol_firma_rector`, `bol_firma_secretaria`, `bol_firma_docente`) VALUES
+(2, 3, 0, 'S', 'S', 'N', 'S', 'S', 'S', 'N', 'S', 'S', 'N', 'N', 'N', 'N', 'S', 'N', 'N', 'S', 'S', 'N', 'N', 'N', 'S');
+
+INSERT INTO `carnet` (`car_titulo`, `car_titulo_con`, `car_titulo_tam`, `car_titulo_col`, `car_subtitulo`, `car_subtitulo_con`, `car_subtitulo_tam`, `car_subtitulo_col`, `car_pie`, `car_pie_con`, `car_pie_tam`, `car_pie_col`, `car_estudiante`, `car_estudiante_tam`, `car_estudiante_col`, `car_codigo`, `car_codigo_tam`, `car_codigo_col`, `car_grupo`, `car_grupo_tam`, `car_grupo_col`, `car_foto`, `car_logo`, `car_fondo`, `car_fondo_nom`, `car_fondo_niv`, `car_linea`, `car_linea_col`) VALUES
+('s', 'TITULO DE LA INSTITUCION EDUCATIVA', 1, '251BAA', 's', 'Direccion o informacion del colegio', 1, '4027BB', 's', 'Direccion o informacion del colegio', 1, '1B147D', 's', 2, '1B1389', 's', 2, '2B15ED', 's', 2, 'F9FFD4', 's', 'n', 's', 'fondo_carnet.jpg', 4, 's', '564AFF');
+
+
+INSERT INTO `tipo_nota` (`tip_not_codigo`, `tip_not_descripcion`, `tip_not_nombre`) VALUES
+(1, 'Calificacion Numerica', 'Numerica');
+
+
+
+
+
+
+
+
+
+INSERT INTO `barner` (`bar_titulo`, `bar_subtitulo`, `bar_logo`, `bar_logo_posicion`, `bar_titulo_tamano`, `bar_titulo_color`, `bar_subtitulo_tamano`, `bar_subtitulo_color`) VALUES
+('**TITULO COLEGIO**', '**SUBTITULO**', '', '', '5px', '#000099', '1px', '#000099');
+
+INSERT INTO `opciones` (`ano_codigo`, `logro`, `indicador`, `css`, `muro`, `mensaje_administrador`, `vista_asignatura`, `status`, `vista_eventos`, `vista_mejores`, `identificador`, `visita`, `notas_estudiante`, `pagos_estudiante`, `encuesta`, `excelente`, `bueno`, `regular`, `falta`, `tip_not_codigo`, `vista_personal`, `calcular_final`, `ins_titulo`, `ins_mensaje`, `ins_estado`, `color_1`, `color_2`, `color_3`, `min_nota`, `aud_publicaciones`, `vista_publicacion`, `ing_logro`, `edi_logro`, `ing_nota_1`, `ing_nota_2`, `ing_nota_3`, `ing_nota_4`, `ing_nota_f`, `edi_nota`, `imp_boletin`, `lugar`, `certificado_ini`, `certificado_fin`, `menu_dinamico`) VALUES
+(**ANO**, 'S', 'S', '3.css', 'S', 'N', 'S', 'S', 'S', 'S', '**CODIGO:####**', 5, 'S', 'N', 'S', 49, 18, 7, 17, 2, 'S', 'N', '', '', 'H', '#FFFFFF', '#FFFFFF', '#FFFFFF', '1.0', 'N', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', '**MUNICIPIO, DEPARTAMENTO**', '', '', 'N');
+
+INSERT INTO `ano_escolar` (`ano_codigo`, `ano_rector`, `ano_secretaria`, `ano_comentario`) VALUES
+(**ANO**, '.', ',', '.');
+
+INSERT INTO `tipo_nota_clasificacion` (`tipo_not_codigo`, `tipo_not_cla_nombre`, `tipo_not_cla_valor`, `tipo_not_cla_valor_f`, `tipo_not_cla_sigla`, `tipo_not_cla_ano`) VALUES
+(1, 'Bajo', '1.0', '2.9', 'BJ', **ANO**),
+(1, 'Basico', '3.0', '3.9', 'BJ', **ANO**),
+(1, 'Alto', '4.0', '4.5', 'AL', **ANO**),
+(1, 'Superior', '4.6', '5.0', 'SP', **ANO**);
+
+INSERT INTO `usuario` (`usu_codigo`, `usu_usuario`, `usu_contrasena`, `usu_tipo`, `usu_estado`, `usu_pertenece`) VALUES
+(1, '**usuario**', '**clave**', 1, 'H', 'root'),
+(2, 'gilberto', 'gilwi', 1, 'H', 'root2');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
